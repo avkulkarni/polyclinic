@@ -1,0 +1,814 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# No version information was available in the source files.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2009-12-21 03:10+0700\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /app_controller.php:185
+msgid "successfully added"
+msgstr "berhasil ditambahkan"
+
+#: /app_controller.php:186
+msgid "cannot add this new record. Please fix the errors mentioned belows"
+msgstr "tidak dapat menambah record baru. Harap perbaiki error yang tertera di bawah"
+
+#: /app_controller.php:198;209
+#: /controllers/letter_outs_controller.php:12;18
+msgid "Invalid parameter"
+msgstr "Parameter salah"
+
+#: /app_controller.php:219
+msgid "successcully edited"
+msgstr "berhasil disunting"
+
+#: /app_controller.php:220
+msgid "cannot save this modification. Please fix the errors mentioned belows"
+msgstr "tidak dapat menyimpan perubahan. Harap perbaiki error yang tertera di bawah"
+
+#: /app_controller.php:234
+msgid "Record successfully deleted"
+msgstr "Record berhasil dihapus"
+
+#: /app_controller.php:236
+msgid "Error deleting deleted"
+msgstr "Tidak dapat menghapus"
+
+#: /app_controller.php:260
+msgid "Only"
+msgstr "Hanya"
+
+#: /app_controller.php:260
+msgid "records can be deleted"
+msgstr "record yang dapat dihapus"
+
+#: /app_controller.php:263
+msgid "record succesfully deleted"
+msgstr "record berhasil dihapus"
+
+#: /controllers/menus_controller.php:8;16
+msgid "Invalid Menu"
+msgstr "Invalid Menu"
+
+#: /controllers/menus_controller.php:20
+msgid "Menu deleted"
+msgstr "Menu terhapus"
+
+#: /controllers/menus_controller.php:23
+msgid "Abort deleted"
+msgstr "Batal menghapus"
+
+#: /views/cities/add.ctp:4
+msgid "Add City"
+msgstr "Tambah Kota"
+
+#: /views/cities/add.ctp:7
+#: /views/cities/edit.ctp:7
+#: /views/cities/index.ctp:14
+#: /views/users/add.ctp:113
+#: /views/users/edit.ctp:113
+#: /views/users/preferences.ctp:113
+msgid "Province"
+msgstr "Propinsi"
+
+#: /views/cities/add.ctp:18
+#: /views/cities/edit.ctp:11
+#: /views/cities/index.ctp:6
+#: /views/groups/add.ctp:8
+#: /views/groups/edit.ctp:8
+#: /views/groups/index.ctp:6
+#: /views/menu_types/add.ctp:7
+#: /views/menu_types/edit.ctp:7
+#: /views/menu_types/index.ctp:6
+#: /views/menus/add.ctp:7
+#: /views/menus/edit.ctp:7
+#: /views/menus/index.ctp:6
+#: /views/menus/view.ctp:9
+#: /views/modules/add.ctp:7
+#: /views/modules/edit.ctp:7
+#: /views/provinces/add.ctp:7
+#: /views/provinces/edit.ctp:7
+#: /views/provinces/index.ctp:10
+#: /views/term_codes/index.ctp:5
+#: /views/unit_codes/index.ctp:5
+#: /views/users/add.ctp:8
+#: /views/users/edit.ctp:8
+#: /views/users/index.ctp:6
+#: /views/users/preferences.ctp:8
+msgid "Name"
+msgstr "Nama"
+
+#: /views/cities/add.ctp:22
+#: /views/cities/edit.ctp:15
+#: /views/cities/index.ctp:10
+msgid "Other Name"
+msgstr "Nama Lainnya"
+
+#: /views/cities/add.ctp:28
+#: /views/cities/edit.ctp:21;22
+#: /views/groups/add.ctp:92
+#: /views/groups/edit.ctp:92;93
+#: /views/letter_ins/add.ctp:37
+#: /views/letter_ins/edit.ctp:37;38
+#: /views/letter_numbers/add.ctp:29
+#: /views/letter_numbers/edit.ctp:36;37
+#: /views/letter_outs/add.ctp:60
+#: /views/menu_types/add.ctp:17
+#: /views/menu_types/edit.ctp:17;18
+#: /views/menus/add.ctp:33
+#: /views/menus/edit.ctp:33;34
+#: /views/modules/add.ctp:34
+#: /views/modules/edit.ctp:34;35
+#: /views/provinces/add.ctp:17
+#: /views/provinces/edit.ctp:17;18
+#: /views/term_codes/add.ctp:19
+#: /views/term_codes/edit.ctp:19;20
+#: /views/unit_codes/add.ctp:19
+#: /views/unit_codes/edit.ctp:19;20
+#: /views/users/add.ctp:170
+#: /views/users/edit.ctp:170;171
+#: /views/users/preferences.ctp:170;171
+msgid "or"
+msgstr "atau"
+
+#: /views/cities/add.ctp:29
+#: /views/cities/edit.ctp:23
+#: /views/groups/add.ctp:93
+#: /views/groups/edit.ctp:94
+#: /views/menu_types/add.ctp:18
+#: /views/menu_types/edit.ctp:19
+#: /views/menus/add.ctp:34
+#: /views/menus/edit.ctp:35
+#: /views/modules/add.ctp:35
+#: /views/modules/edit.ctp:36
+#: /views/provinces/add.ctp:18
+#: /views/provinces/edit.ctp:19
+#: /views/users/add.ctp:171
+#: /views/users/edit.ctp:172
+#: /views/users/preferences.ctp:172
+msgid "Back"
+msgstr "Kembali"
+
+#: /views/cities/edit.ctp:4
+msgid "Edit City"
+msgstr "Sunting Kota"
+
+#: /views/cities/edit.ctp:21
+#: /views/menu_types/edit.ctp:17
+#: /views/provinces/edit.ctp:17
+msgid "Update"
+msgstr "Simpan perubahan"
+
+#: /views/cities/edit.ctp:22
+#: /views/elements/tablegrid.ctp:25
+#: /views/groups/edit.ctp:93
+#: /views/letter_ins/edit.ctp:38
+#: /views/letter_numbers/edit.ctp:37
+#: /views/menu_types/edit.ctp:18
+#: /views/menus/edit.ctp:34
+#: /views/modules/edit.ctp:35
+#: /views/provinces/edit.ctp:18
+#: /views/term_codes/edit.ctp:20
+#: /views/unit_codes/edit.ctp:20
+#: /views/users/edit.ctp:171
+#: /views/users/preferences.ctp:171
+msgid "Delete"
+msgstr "Hapus"
+
+#: /views/cities/edit.ctp:22
+#: /views/groups/edit.ctp:93
+#: /views/letter_ins/edit.ctp:38
+#: /views/letter_numbers/edit.ctp:37
+#: /views/menu_types/edit.ctp:18
+#: /views/menus/edit.ctp:34
+#: /views/modules/edit.ctp:35
+#: /views/provinces/edit.ctp:18
+#: /views/term_codes/edit.ctp:20
+#: /views/unit_codes/edit.ctp:20
+#: /views/users/edit.ctp:171
+#: /views/users/preferences.ctp:171
+msgid "Are you sure you want to delete"
+msgstr "Anda yakin ingin menghapus"
+
+#: /views/elements/tablegrid.ctp:16
+msgid "Add New"
+msgstr "Tambah Baru"
+
+#: /views/elements/tablegrid.ctp:51
+msgid "Clear"
+msgstr "Hapus"
+
+#: /views/elements/tablegrid.ctp:72
+msgid "Halaman"
+msgstr "Halaman"
+
+#: /views/elements/tablegrid.ctp:72
+msgid "dari"
+msgstr "dari"
+
+#: /views/elements/tablegrid.ctp:72
+msgid "menampilkan"
+msgstr "menampilkan"
+
+#: /views/elements/tablegrid.ctp:72
+msgid "baris dari total"
+msgstr ""
+
+#: /views/elements/tablegrid.ctp:72
+msgid "baris, dimulai dari baris"
+msgstr ""
+
+#: /views/elements/tablegrid.ctp:72
+msgid "berakhir di baris"
+msgstr ""
+
+#: /views/elements/tablegrid.ctp:90;111
+msgid "Sort by"
+msgstr "Sorting berdasar"
+
+#: /views/elements/tablegrid.ctp:124
+msgid "No Records"
+msgstr "Tidak ada record"
+
+#: /views/groups/add.ctp:5
+msgid "Add Group"
+msgstr "Tambah Grup"
+
+#: /views/groups/add.ctp:14
+#: /views/groups/edit.ctp:14
+msgid "Set group permission"
+msgstr "Set akses grup"
+
+#: /views/groups/add.ctp:53
+#: /views/groups/edit.ctp:53
+msgid "Set group menu visibility"
+msgstr "Set penampakan menu"
+
+#: /views/groups/edit.ctp:5
+msgid "Edit Group"
+msgstr "Sunting Grup"
+
+#: /views/groups/index.ctp:10
+msgid "Users"
+msgstr "Pengguna"
+
+#: /views/groups/index.ctp:14
+msgid "Permission"
+msgstr "Hak Akses"
+
+#: /views/layouts/default.ctp:33
+msgid "Home"
+msgstr "Beranda"
+
+#: /views/layouts/default.ctp:34
+msgid "Preferences"
+msgstr "Selera"
+
+#: /views/layouts/default.ctp:35
+msgid "Help"
+msgstr "Bantuan"
+
+#: /views/layouts/default.ctp:36
+msgid "Logout"
+msgstr "Keluar"
+
+#: /views/letter_ins/add.ctp:4
+msgid "Add Letter In"
+msgstr "Tambah Surat Masuk"
+
+#: /views/letter_ins/add.ctp:7
+#: /views/letter_ins/edit.ctp:7
+#: /views/letter_ins/index.ctp:5
+#: /views/letter_outs/index.ctp:5
+msgid "Letter No."
+msgstr "No. Surat"
+
+#: /views/letter_ins/add.ctp:11
+#: /views/letter_ins/edit.ctp:11
+#: /views/letter_ins/index.ctp:9
+msgid "From"
+msgstr "Dari"
+
+#: /views/letter_ins/add.ctp:15
+#: /views/letter_ins/edit.ctp:15
+#: /views/letter_ins/index.ctp:13
+#: /views/letter_outs/add.ctp:50
+#: /views/letter_outs/index.ctp:17
+#: /views/letter_outs/view.ctp:34
+msgid "Date"
+msgstr "Tanggal"
+
+#: /views/letter_ins/add.ctp:19
+#: /views/letter_ins/edit.ctp:19
+#: /views/letter_ins/index.ctp:17
+msgid "From Address"
+msgstr "Asal Alamat"
+
+#: /views/letter_ins/add.ctp:23
+#: /views/letter_ins/edit.ctp:23
+#: /views/letter_ins/index.ctp:21
+#: /views/letter_outs/add.ctp:37
+#: /views/letter_outs/index.ctp:13
+#: /views/letter_outs/view.ctp:22
+msgid "Term"
+msgstr "Perihal"
+
+#: /views/letter_ins/add.ctp:27
+#: /views/letter_ins/edit.ctp:27
+#: /views/letter_ins/index.ctp:25
+#: /views/letter_outs/add.ctp:46
+#: /views/letter_outs/index.ctp:21
+#: /views/letter_outs/view.ctp:30
+msgid "To"
+msgstr "Disposisi"
+
+#: /views/letter_ins/add.ctp:31
+#: /views/letter_ins/edit.ctp:31
+#: /views/letter_ins/index.ctp:29
+#: /views/letter_outs/add.ctp:28
+#: /views/letter_outs/index.ctp:9
+#: /views/letter_outs/view.ctp:14
+#: /views/users/add.ctp:16
+#: /views/users/edit.ctp:16
+#: /views/users/index.ctp:14
+#: /views/users/preferences.ctp:16
+msgid "Unit"
+msgstr "Satuan"
+
+#: /views/letter_ins/add.ctp:37
+#: /views/letter_numbers/add.ctp:29
+#: /views/letter_outs/add.ctp:60
+#: /views/term_codes/add.ctp:19
+#: /views/unit_codes/add.ctp:19
+msgid "Add"
+msgstr "Tambah"
+
+#: /views/letter_ins/add.ctp:38
+#: /views/letter_ins/edit.ctp:39
+#: /views/letter_numbers/add.ctp:30
+#: /views/letter_numbers/edit.ctp:38
+#: /views/letter_outs/add.ctp:61
+#: /views/letter_outs/view.ctp:44
+#: /views/term_codes/add.ctp:20
+#: /views/term_codes/edit.ctp:21
+#: /views/unit_codes/add.ctp:20
+#: /views/unit_codes/edit.ctp:21
+msgid "Back to index"
+msgstr "Kembali ke indeks"
+
+#: /views/letter_ins/edit.ctp:4
+msgid "Edit Letter In"
+msgstr "Sunting Surat Masuk"
+
+#: /views/letter_ins/edit.ctp:37
+#: /views/letter_numbers/edit.ctp:36
+#: /views/term_codes/edit.ctp:19
+#: /views/unit_codes/edit.ctp:19
+msgid "Save"
+msgstr "Simpan"
+
+#: /views/letter_ins/index.ctp:33
+#: /views/letter_numbers/index.ctp:27
+#: /views/letter_outs/index.ctp:29
+#: /views/modules/index.ctp:14
+#: /views/term_codes/index.ctp:13
+#: /views/unit_codes/index.ctp:13
+#: /views/users/index.ctp:30
+msgid "Created By"
+msgstr "Dibuat Oleh"
+
+#: /views/letter_ins/index.ctp:37
+#: /views/letter_numbers/index.ctp:31
+#: /views/letter_outs/index.ctp:33
+#: /views/modules/index.ctp:18
+#: /views/term_codes/index.ctp:17
+#: /views/unit_codes/index.ctp:17
+#: /views/users/index.ctp:26
+msgid "Created On"
+msgstr "Waktu Pembuatan"
+
+#: /views/letter_ins/index.ctp:55
+#: /views/letter_numbers/index.ctp:49
+#: /views/letter_outs/index.ctp:56
+#: /views/menus/index.ctp:50
+#: /views/users/index.ctp:57
+msgid "Yes"
+msgstr "Ya"
+
+#: /views/letter_ins/index.ctp:58
+#: /views/letter_numbers/index.ctp:52
+#: /views/letter_outs/index.ctp:59
+#: /views/menus/index.ctp:47
+#: /views/users/index.ctp:54
+msgid "No"
+msgstr "Tidak"
+
+#: /views/letter_numbers/add.ctp:4
+msgid "Refill Letter No."
+msgstr "Isi Ulang Nomor Surat"
+
+#: /views/letter_numbers/add.ctp:7
+#: /views/letter_numbers/edit.ctp:8
+msgid "No. From"
+msgstr "No. Dari"
+
+#: /views/letter_numbers/add.ctp:11
+#: /views/letter_numbers/edit.ctp:15
+msgid "No. Until"
+msgstr "No. Sampai"
+
+#: /views/letter_numbers/add.ctp:15
+#: /views/letter_numbers/edit.ctp:22
+msgid "Valid Date From"
+msgstr "Waktu aktif dari"
+
+#: /views/letter_numbers/add.ctp:19
+#: /views/letter_numbers/edit.ctp:26
+msgid "Valid Date Until"
+msgstr "Waktu aktif sampai"
+
+#: /views/letter_numbers/add.ctp:23
+#: /views/letter_numbers/edit.ctp:30
+#: /views/letter_numbers/index.ctp:23
+#: /views/menus/view.ctp:29
+#: /views/users/add.ctp:160
+#: /views/users/edit.ctp:160
+#: /views/users/index.ctp:22
+#: /views/users/preferences.ctp:160
+msgid "Active"
+msgstr "Aktif"
+
+#: /views/letter_numbers/edit.ctp:5
+msgid "Edit Letter No."
+msgstr ""
+
+#: /views/letter_numbers/index.ctp:7
+msgid "No. Start"
+msgstr ""
+
+#: /views/letter_numbers/index.ctp:11
+msgid "End"
+msgstr ""
+
+#: /views/letter_numbers/index.ctp:15
+msgid "Period Begin On"
+msgstr ""
+
+#: /views/letter_numbers/index.ctp:19
+msgid "Period ended on"
+msgstr ""
+
+#: /views/letter_numbers/index.ctp:35
+msgid "Stock"
+msgstr ""
+
+#: /views/letter_outs/add.ctp:4
+msgid "Add Letter OUt"
+msgstr ""
+
+#: /views/letter_outs/add.ctp:21
+msgid "Padding zero"
+msgstr ""
+
+#: /views/letter_outs/add.ctp:22
+msgid "If you get number 1 and max. number is 9999, you'll get 0001"
+msgstr ""
+
+#: /views/letter_outs/add.ctp:54
+#: /views/letter_outs/index.ctp:25
+#: /views/letter_outs/view.ctp:38
+msgid "Remark"
+msgstr ""
+
+#: /views/letter_outs/view.ctp:3
+msgid "View Letter Out"
+msgstr ""
+
+#: /views/letter_outs/view.ctp:6
+msgid "Letter No"
+msgstr ""
+
+#: /views/menu_types/add.ctp:4
+msgid "Add Menu Type"
+msgstr ""
+
+#: /views/menu_types/add.ctp:11
+#: /views/menu_types/edit.ctp:11
+#: /views/menu_types/index.ctp:10
+msgid "Call Name"
+msgstr ""
+
+#: /views/menu_types/edit.ctp:4
+msgid "Edit Menu Type"
+msgstr ""
+
+#: /views/menus/add.ctp:4
+#: /views/menus/edit.ctp:4
+msgid "Add Menu"
+msgstr ""
+
+#: /views/menus/add.ctp:11
+#: /views/menus/edit.ctp:11
+#: /views/menus/index.ctp:14
+msgid "Parent Menu"
+msgstr ""
+
+#: /views/menus/add.ctp:15
+#: /views/menus/edit.ctp:15
+#: /views/menus/index.ctp:30
+msgid "Menu Type"
+msgstr ""
+
+#: /views/menus/add.ctp:19
+#: /views/menus/edit.ctp:19
+msgid "URL"
+msgstr ""
+
+#: /views/menus/add.ctp:23
+#: /views/menus/edit.ctp:23
+#: /views/menus/index.ctp:18
+msgid "Element Id"
+msgstr ""
+
+#: /views/menus/add.ctp:27
+#: /views/menus/edit.ctp:27
+#: /views/menus/index.ctp:26
+msgid "Enable"
+msgstr ""
+
+#: /views/menus/index.ctp:10
+msgid "Url"
+msgstr ""
+
+#: /views/menus/index.ctp:22
+msgid "Order"
+msgstr ""
+
+#: /views/menus/view.ctp:2
+msgid "Menu"
+msgstr ""
+
+#: /views/menus/view.ctp:4
+msgid "Id"
+msgstr ""
+
+#: /views/menus/view.ctp:14
+msgid "Path"
+msgstr ""
+
+#: /views/menus/view.ctp:19
+msgid "Parent Id"
+msgstr ""
+
+#: /views/menus/view.ctp:24
+msgid "Weight"
+msgstr ""
+
+#: /views/menus/view.ctp:34
+msgid "Created"
+msgstr ""
+
+#: /views/menus/view.ctp:39
+msgid "Modified"
+msgstr ""
+
+#: /views/menus/view.ctp:48
+msgid "Edit Menu"
+msgstr ""
+
+#: /views/menus/view.ctp:49
+msgid "Delete Menu"
+msgstr ""
+
+#: /views/menus/view.ctp:49
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: /views/menus/view.ctp:50
+msgid "List Menus"
+msgstr ""
+
+#: /views/menus/view.ctp:51
+msgid "New Menu"
+msgstr ""
+
+#: /views/modules/add.ctp:4
+msgid "Add Module"
+msgstr ""
+
+#: /views/modules/add.ctp:11
+#: /views/modules/edit.ctp:11
+#: /views/modules/index.ctp:10
+msgid "Controller"
+msgstr ""
+
+#: /views/modules/add.ctp:15
+#: /views/modules/edit.ctp:15
+msgid "Actions"
+msgstr ""
+
+#: /views/modules/add.ctp:20
+#: /views/modules/edit.ctp:20
+msgid "seperate actions with space"
+msgstr ""
+
+#: /views/modules/add.ctp:26
+#: /views/modules/edit.ctp:26
+msgid "Show records created by every user"
+msgstr ""
+
+#: /views/modules/edit.ctp:4
+msgid "Edit Module"
+msgstr ""
+
+#: /views/modules/index.ctp:6
+msgid "name"
+msgstr ""
+
+#: /views/pages/home.ctp:1
+msgid "Welcome"
+msgstr ""
+
+#: /views/provinces/add.ctp:4
+msgid "Add Province"
+msgstr ""
+
+#: /views/provinces/add.ctp:11
+#: /views/provinces/edit.ctp:11
+#: /views/provinces/index.ctp:6
+#: /views/term_codes/index.ctp:9
+#: /views/unit_codes/index.ctp:9
+msgid "Code"
+msgstr "Kode"
+
+#: /views/provinces/edit.ctp:4
+msgid "Edit Province"
+msgstr ""
+
+#: /views/term_codes/add.ctp:6
+#: /views/term_codes/edit.ctp:6
+msgid "Add Term Code"
+msgstr ""
+
+#: /views/term_codes/add.ctp:9
+#: /views/term_codes/edit.ctp:9
+msgid "Name of term"
+msgstr ""
+
+#: /views/term_codes/add.ctp:13
+#: /views/term_codes/edit.ctp:13
+msgid "Code of term"
+msgstr ""
+
+#: /views/unit_codes/add.ctp:6
+#: /views/unit_codes/edit.ctp:6
+msgid "Add Unit Code"
+msgstr ""
+
+#: /views/unit_codes/add.ctp:9
+#: /views/unit_codes/edit.ctp:9
+msgid "Name of unit"
+msgstr ""
+
+#: /views/unit_codes/add.ctp:13
+#: /views/unit_codes/edit.ctp:13
+msgid "Code of unit"
+msgstr ""
+
+#: /views/users/add.ctp:5
+msgid "Add User"
+msgstr ""
+
+#: /views/users/add.ctp:12
+#: /views/users/edit.ctp:12
+#: /views/users/index.ctp:10
+#: /views/users/preferences.ctp:12
+msgid "User Name"
+msgstr ""
+
+#: /views/users/add.ctp:25
+#: /views/users/edit.ctp:25
+#: /views/users/index.ctp:18
+#: /views/users/preferences.ctp:25
+msgid "Group"
+msgstr ""
+
+#: /views/users/add.ctp:34
+#: /views/users/edit.ctp:34
+#: /views/users/preferences.ctp:34
+msgid "Password"
+msgstr ""
+
+#: /views/users/add.ctp:38
+#: /views/users/edit.ctp:38
+#: /views/users/preferences.ctp:38
+msgid "Retype password here"
+msgstr ""
+
+#: /views/users/add.ctp:42
+#: /views/users/edit.ctp:42
+#: /views/users/preferences.ctp:42
+msgid "Email"
+msgstr ""
+
+#: /views/users/add.ctp:46
+#: /views/users/edit.ctp:46
+#: /views/users/preferences.ctp:46
+msgid "Gender"
+msgstr ""
+
+#: /views/users/add.ctp:51
+#: /views/users/edit.ctp:51
+#: /views/users/preferences.ctp:51
+msgid "Female"
+msgstr ""
+
+#: /views/users/add.ctp:52
+#: /views/users/edit.ctp:52
+#: /views/users/preferences.ctp:52
+msgid "Male"
+msgstr ""
+
+#: /views/users/add.ctp:60
+#: /views/users/edit.ctp:60
+#: /views/users/preferences.ctp:60
+msgid "Place Of Birth"
+msgstr ""
+
+#: /views/users/add.ctp:68
+#: /views/users/edit.ctp:68
+#: /views/users/preferences.ctp:68
+msgid "Date Of Birth"
+msgstr ""
+
+#: /views/users/add.ctp:80
+#: /views/users/edit.ctp:80
+#: /views/users/preferences.ctp:80
+msgid "Home Address"
+msgstr ""
+
+#: /views/users/add.ctp:104
+#: /views/users/edit.ctp:104
+#: /views/users/preferences.ctp:104
+msgid "Zip Code"
+msgstr ""
+
+#: /views/users/add.ctp:130
+#: /views/users/edit.ctp:130
+#: /views/users/preferences.ctp:130
+msgid "City"
+msgstr ""
+
+#: /views/users/add.ctp:133
+#: /views/users/edit.ctp:133
+#: /views/users/preferences.ctp:133
+msgid "Select Province first"
+msgstr ""
+
+#: /views/users/add.ctp:144
+#: /views/users/edit.ctp:144
+#: /views/users/preferences.ctp:144
+msgid "Handphone"
+msgstr ""
+
+#: /views/users/add.ctp:152
+#: /views/users/edit.ctp:152
+#: /views/users/preferences.ctp:152
+msgid "Homephone"
+msgstr ""
+
+#: /views/users/edit.ctp:5
+msgid "Edit User"
+msgstr ""
+
+#: /views/users/index.ctp:62
+msgid "System"
+msgstr "Sistem"
+
+#: /views/users/preferences.ctp:5
+msgid "User Preferences"
+msgstr ""
+
+#: /webroot/test.php:98
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
+msgid  "Location"
+msgstr "Lokasi"
+
+msgid  "Service Plan"
+msgstr "Rencanan Service"
+
+
+
+
