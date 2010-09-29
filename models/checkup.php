@@ -64,4 +64,49 @@ class Checkup extends AppModel {
             'recursive' => -1
         ));
     }
+    
+    function paginate($conditions, $fields, $order, $limit, $page = 1, $recursive = null, $extra = array()) {
+        $this->Behaviors->attach('Containable');
+        $contain = array(
+            'Patient' => array('fields' => array('name')),
+            'Handler' => array('fields' => array('name')),
+            'CheckupsMedicine',
+            'Checktype' => array('fields' => array('name')),
+            'Diagnosis' => array('fields' => array('name'))
+        );
+        $records = $this->find('all', compact(
+            'conditions', 'fields', 'order', 'limit',
+            'page', 'recursive', 'group', 'contain'
+            )
+        );
+        $medicines = $this->CheckupsMedicine->Medicine->find('list');
+        
+        foreach ($records as $key => $record) {
+            if ( !empty($record['Checktype']) ) {
+                $records[$key]['Checkup']['checktype'] = '<ul>';
+                foreach ( $record['Checktype'] as $checktype ) {
+                    $records[$key]['Checkup']['checktype'] .= '<li>' . $checktype['name'] . '</li>';
+                }
+                $records[$key]['Checkup']['checktype'] .= '</ul>';
+            }
+            
+            if ( !empty($record['Diagnosis']) ) {
+                $records[$key]['Checkup']['diagnosis'] = '<ul>';
+                foreach ( $record['Diagnosis'] as $diagnosis ) {
+                    $records[$key]['Checkup']['diagnosis'] .= '<li>' . $diagnosis['name'] . '</li>';
+                }
+                $records[$key]['Checkup']['diagnosis'] .= '</ul>';
+            }
+            
+            if ( !empty($record['CheckupsMedicine']) ) {
+                $records[$key]['Checkup']['medicine'] = '<ul>';
+                foreach ( $record['CheckupsMedicine'] as $medicine ) {
+                    $records[$key]['Checkup']['medicine'] .= '<li>' . $medicines[$medicine['medicine_id']] . '</li>';
+                }
+                $records[$key]['Checkup']['medicine'] .= '</ul>';
+            }
+        }
+        
+        return $records;
+    }
 }
