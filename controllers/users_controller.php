@@ -94,11 +94,12 @@ class UsersController extends AppController {
                 
 				unset($this->data['User']['remember_me']);
 			}
-			
+
             $redirect = $this->Session->read('Auth.redirect');
             
-            if ( is_null($redirect) || $redirect === '/users/logout' ) {
-			    $this->Auth->loginRedirect = array('/');
+            if ( is_null($redirect) || empty($redirect) || $redirect === '/users/logout' ) {
+			    $this->Auth->loginRedirect = array('/pages/home');
+                $this->redirect('/');
             }
             $this->redirect($this->Auth->redirect());
 		}
