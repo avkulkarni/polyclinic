@@ -14,6 +14,10 @@
                     'title' => __('Jenis Pasien', true),
                     'sortable' => true
                 ),
+                'user_id' => array(
+                    'title' => 'Username',
+                    'sortable' => true
+                ),
                 "created" => array(
                     'title' => __('Tanggal Input', true),
                     'sortable' => true
@@ -32,6 +36,10 @@
                 'created_by' => array(
                     'model' => 'CreatedBy',
                     'field' => 'name'
+                ),
+                'user_id' => array(
+                    'model' => 'User',
+                    'field' => 'username'
                 )
             ),
             'displayedAs' => array(

@@ -13,8 +13,10 @@ class PatientsController extends AppController {
     }
     
     function __setAdditionals() {
-        $types = $this->Patient->PatientType->find('list');
-        $this->set('types', $types);
+        $this->set('types', $this->Patient->PatientType->find('list'));
+        $this->set('users', $this->Patient->User->find('list', array(
+            'order' => 'name'
+        )));
     }
 }
 ?>
