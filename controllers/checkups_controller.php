@@ -332,12 +332,16 @@ class CheckupsController extends AppController {
             $this->layout = 'printhtml';
             Configure::write('debug', 0);
             
+            $conditions = array(
+                'patient_id' => $this->data['Checkup']['patient_id']
+            );
             $this->Checkup->Behaviors->attach('Containable');
             $checkups = $this->Checkup->find('all', array(
                 'condition' => $conditions,
                 'contain' => array(
                     'Patient' => array(
-                        'fields' => array('name', 'code')
+                        'fields' => array('name', 'code'),
+                        'PatientType', 'User'
                     ),
                     'Handler',
                     'CheckupsMedicine' => array(
@@ -355,7 +359,7 @@ class CheckupsController extends AppController {
                     'date' => $checkup['Checkup']['checkup_date'],
                     'patient_code' => $checkup['Patient']['code'],
                     'patient_name' => $checkup['Patient']['name'],
-                    'patient_work' => '',
+                    'patient_work' => $checkup['Patient']['PatientType']['name'],
                     'checktypes' => '',
                     'diagnoses' => '',
                     'medicines' => '',
