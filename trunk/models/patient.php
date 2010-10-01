@@ -22,7 +22,7 @@ class Patient extends AppModel {
             'className' => 'User',
             'foreignKey' => 'created_by',
             'fields' => array('id', 'name')
-        )
+        ), 'User'
     );
     
     function beforeSave($created) {

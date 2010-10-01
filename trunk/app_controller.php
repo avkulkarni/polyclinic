@@ -32,7 +32,7 @@ class AppController extends Controller {
         'getParent', 'getDeep', 'delete_rows', 'checkUnique', 'check_unique',
         'jsonize', 'getOptions', 'get_options', 'secureimage',
         'menu', 'menu_select', 'menu_select_type', 'login', 'logout', 'preferences',
-        'display', 'getuser', 'getunit',
+        'display', 'getuser', 'getunit', 'get_satuan', 'getSatuan',
         '__setAdditionals', 'istransacationexists', 'permission_denied', 'patient_detail'
     );
     var $basicOperations = array(

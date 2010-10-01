@@ -8,6 +8,10 @@
                 <td><?php echo $form->input('name', array('div'=>false, 'label'=>false, 'class'=>'required'));?></td>
             </tr>
             <tr>
+                <td>Satuan:</td>
+                <td><?php echo $form->select('unit_id', $units, null, array('div'=>false, 'label' => false));?></td>
+            </tr>
+            <tr>
                 <td colspan="2">
                 <?php
                     echo $form->submit('Add', array('div'=>false)) . "&nbsp;" . __('or', true) . "&nbsp;";

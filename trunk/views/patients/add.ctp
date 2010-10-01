@@ -19,6 +19,21 @@
                 </td>
             </tr>
             <tr>
+                <td class="label-required">Pengguna terkait<br />
+                <span class="label">Jika pasien ini memiliki username<br />
+                dan juga pegawai, pilih namanya.
+                </span>
+                </td>
+                <td>
+                <?php
+                    echo $form->select('user_id', $users, null, array(
+                        'div' => false, 'label' => false, 'class' => 'required',
+                        'empty' => ''
+                    ));
+                ?>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
                 <?php
                     echo $form->submit('Add', array('div'=>false)) . "&nbsp;" . __('or', true) . "&nbsp;";

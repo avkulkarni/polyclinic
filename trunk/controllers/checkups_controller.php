@@ -331,7 +331,65 @@ class CheckupsController extends AppController {
         if ( !empty($this->data['Checkup']['patient_id']) ) {
             $this->layout = 'printhtml';
             Configure::write('debug', 0);
-        
+            
+            $this->Checkup->Behaviors->attach('Containable');
+            $checkups = $this->Checkup->find('all', array(
+                'condition' => $conditions,
+                'contain' => array(
+                    'Patient' => array(
+                        'fields' => array('name', 'code')
+                    ),
+                    'Handler',
+                    'CheckupsMedicine' => array(
+                        'fields' => array('qty'),
+                        'Medicine'
+                    ),
+                    'Checktype', 'Diagnosis'
+                )
+            ));
+            $handler_types = $this->Checkup->Handler->HandlerType->find('list');
+            $records = array();
+            $no = 1;
+            foreach ($checkups as $checkup) {
+                $records[$no] = array(
+                    'date' => $checkup['Checkup']['checkup_date'],
+                    'patient_code' => $checkup['Patient']['code'],
+                    'patient_name' => $checkup['Patient']['name'],
+                    'patient_work' => '',
+                    'checktypes' => '',
+                    'diagnoses' => '',
+                    'medicines' => '',
+                    'handler' =>  ($checkup['Handler']['handler_type_id'] ? 
+                                        $handler_types[$checkup['Handler']['handler_type_id']] : '') . ' ' . 
+                                  $checkup['Handler']['name']
+                );
+                if ( !empty($checkup['Checktype']) ) {
+                    // check types
+                    $records[$no]['checktypes'] = '<ul>';
+                    foreach ($checkup['Checktype'] as $checktype) {
+                        $records[$no]['checktypes'] .= '<li>' . $checktype['name'] . '</li>';
+                    }
+                    $records[$no]['checktypes'] .= '</ul>';
+                    
+                    // diagnoses
+                    $records[$no]['diagnoses'] = '<ul>';
+                    foreach ($checkup['Diagnosis'] as $diagnosis) {
+                        $records[$no]['diagnoses'] .= '<li>' . $diagnosis['name'] . '</li>';
+                    }
+                    $records[$no]['diagnoses'] .= '</ul>';
+                    
+                    // medicines
+                    $records[$no]['medicines'] = '<ul>';
+                    foreach ($checkup['CheckupsMedicine'] as $medicine) {
+                        $records[$no]['medicines'] .= '<li>' .$medicine['Medicine']['name'] .
+                            ' &rarr; ' . $medicine['qty'] . '</li>';
+                    }
+                    $records[$no]['medicines'] .= '</ul>';
+                }
+                
+                $no++;
+            }
+            $this->set('records', $records);
         } else {
             $show_form = true;
             $this->set('patients', $this->Checkup->Patient->find('list'));
