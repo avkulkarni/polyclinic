@@ -96,7 +96,16 @@ class CheckupsController extends AppController {
         }
         $this->set('handlers', $handlers);
         
-        $this->set('medicines', $this->Checkup->CheckupsMedicine->Medicine->find('list'));
+        $_medicines = $this->Checkup->CheckupsMedicine->Medicine->find('all');
+        $medicines = array();
+        $units = array();
+        foreach ($_medicines as $medicine) {
+            $medicines[$medicine['Medicine']['id']] = $medicine['Medicine']['name'];
+            $units[$medicine['Medicine']['id']] = $medicine['Unit']['name'];
+        }
+        
+        $this->set('medicines', $medicines);
+        $this->set('units', $units);
         $this->set('diagnoses', $this->Checkup->Diagnosis->find('list'));
         $this->set('checktypes', $this->Checkup->Checktype->find('list'));
         

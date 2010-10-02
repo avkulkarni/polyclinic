@@ -1,6 +1,6 @@
 <?php echo $html->script('jquery.numeric', false);?>
 <?php echo $html->scriptBlock($ajaxURL);?>
-<?php echo $html->script('checkups', false);?>
+<?php echo $html->script('checkups.js?20101002', false);?>
 <?php echo $html->css('checkups', 'stylesheet', array('inline' => false));?>
 <div class="<?=$this->params['controller']?> <?=$html->action?>">
 <?php echo $form->create('Checkup');?>
@@ -35,6 +35,7 @@
                                         'div' => false, 'label' => false, 'class' => 'inpuText',
                                         'empty' => 'Pilih Nama Pasien'
                                     ));
+                                    echo ($form->isFieldError('patient_id')) ? $form->error('patient_id') : '';
                                 ?>
                             </td>
                         </tr>
@@ -60,6 +61,18 @@
                                         <?php echo $patient['PatientType']['name'];?>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="label">Tgl. Lahir</td>
+                                        <td class="val">
+                                        <?php echo $time->format('d/m/Y', $patient['Patient']['dob']);?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">Jenis Kelamin</td>
+                                        <td class="val">
+                                        <?php echo $patient['Patient']['sex'] == 'M' ? 'Laki-laki' : 'Perempuan';?>
+                                        </td>
+                                    </tr>
                                 </table>
                                 <?php endif;?>
                             </td>
@@ -75,6 +88,7 @@
                                         'div' => false, 'label' => false, 'class' => 'inpuText',
                                         'empty' => 'Pilih Nama Pemeriksa'
                                     ));
+                                    echo ($form->isFieldError('handler_id')) ? $form->error('handler_id') : '';
                                 ?>
                             </td>
                         </tr>
@@ -126,6 +140,7 @@
                                 <th>&nbsp;</th>
                                 <th>Nama Obat</th>
                                 <th>Jumlah</th>
+                                <th>Satuan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -160,6 +175,10 @@
                                             'value' => $checkups_medicine['qty']
                                         ));
                                     echo '</td>';
+                                    echo '<td class="unit">' .
+                                         (isset($units[$checkups_medicine['medicine_id']]) ?
+                                               $units[$checkups_medicine['medicine_id']] : '') .
+                                         '</td>';
                                 echo '</tr>';
                             endforeach;
                         ?>
@@ -190,12 +209,13 @@
                                         ));
                                     ?>
                                 </td>
+                                <td class="unit">&nbsp;</td>
                             </tr>
                         <?php endif;?>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="3">
+                                <th colspan="4">
                                     <span class="up"></span>
                                     <input type="button" name="add_row" id="add_row" value="+ Tambah Obat" /> &nbsp; atau &nbsp;
                                     <input type="button" name="del_row" id="del_row" value="- Hapus Obat" />

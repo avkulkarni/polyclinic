@@ -19,6 +19,17 @@
                 </td>
             </tr>
             <tr>
+                <td class="label-required">Tanggal lahir</td>
+                <td>
+                <?php
+                    echo $form->input('dob', array(
+                        'div'=>false, 'label'=>false, 'class'=>'required',
+                        'type' => 'date'
+                    ));
+                ?>
+                </td>
+            </tr>
+            <tr>
                 <td class="label-required">Pengguna terkait<br />
                 <span class="label">Jika pasien ini memiliki username<br />
                 dan juga pegawai, pilih namanya.

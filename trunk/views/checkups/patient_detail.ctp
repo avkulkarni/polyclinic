@@ -18,5 +18,17 @@
         <?php echo $patient['PatientType']['name'];?>
         </td>
     </tr>
+    <tr>
+        <td class="label">Tgl. Lahir</td>
+        <td class="val">
+        <?php echo $time->format('d/m/Y', $patient['Patient']['dob']);?>
+        </td>
+    </tr>
+    <tr>
+        <td class="label">Jenis Kelamin</td>
+        <td class="val">
+        <?php echo $patient['Patient']['sex'] == 'M' ? 'Laki-laki' : 'Perempuan';?>
+        </td>
+    </tr>
 </table>
 <?php endif;?>
