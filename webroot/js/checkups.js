@@ -1,4 +1,5 @@
 var trClone; // first loaded tr is cloned
+var units = {}; // unit of medicine
 $(function() {
     var tableScope = $('#checkups_medicines');
     var tableScopeBody = $('tbody:first', tableScope);
@@ -62,6 +63,15 @@ $(function() {
             });
         }
     });
+    
+    // change of medicine, change of unit
+    $('.medicine_id').live('change', function() {
+        var tr = $(this).parent().parent();
+        var unit = '';
+        if ( units[this.value] ) unit = units[this.value];
+        
+        $('.unit', tr).html( unit );
+    });
 });
 
 /**
@@ -86,7 +96,8 @@ function preformatNewRow(tr) {
     $('.medicine_id:first', tr).attr('name', 'data[Checkup][CheckupsMedicine][' +
         newId + '][medicine_id]');
     $('.qty:first', tr).attr('name', 'data[Checkup][CheckupsMedicine][' +
-        newId + '][qty]');
+        newId + '][qty]').val('');
+    $('.unit:first', tr).html('&nbsp');
 
     return tr;
 }

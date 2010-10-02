@@ -4,3 +4,5 @@
 2010-09-26 21:54:42 Notice: Notice (8): Undefined variable: profile in [/home/akeda/www/poliklinik/app/views/layouts/default.ctp, line 85]
 2010-10-01 08:04:26 Notice: Notice (8): Undefined variable: medicines in [/home/akeda/www/poliklinik/app/controllers/medicine_ins_controller.php, line 32]
 2010-10-01 08:06:24 Notice: Notice (8): Undefined variable: item_id in [/home/akeda/www/poliklinik/app/controllers/medicine_ins_controller.php, line 21]
+2010-10-02 09:22:32 Notice: Notice (8): Undefined property: FormHelper::$isFieldError in [/home/akeda/www/poliklinik/app/views/checkups/add.ctp, line 41]
+2010-10-02 09:22:40 Notice: Notice (8): Undefined property: FormHelper::$fieldError in [/home/akeda/www/poliklinik/app/views/checkups/add.ctp, line 41]
