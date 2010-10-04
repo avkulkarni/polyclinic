@@ -60,6 +60,81 @@
                                 ?>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="label-required">
+                                Anamnesis &rarr;<br />
+                                <span class="label">uraian data keluhan<br />pasien.</span>
+                            </td>
+                            <td>
+                                <?php 
+                                    echo $form->input('anamnesis', array(
+                                        'div' => false, 'label' => false, 'class' => 'inpuText',
+                                        'type' => 'text', 'rows' => 3, 'cols' => 24
+                                    ));
+                                    echo ($form->isFieldError('anamnesis')) ? $form->error('anamnesis') : '';
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-required">
+                                Pemeriksaan fisik &rarr;<br />
+                                <span class="label">uraian data fisik<br />pasien.</span>
+                            </td>
+                            <td>
+                                <?php 
+                                    echo $form->input('physical_check', array(
+                                        'div' => false, 'label' => false, 'class' => 'inpuText',
+                                        'type' => 'text', 'rows' => 3, 'cols' => 24
+                                    ));
+                                    echo ($form->isFieldError('physical_check')) ? $form->error('physical_check') : '';
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-required">
+                                Pemeriksaan darah &rarr;
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><span class="label">Glukosa</span></td>
+                                        <td>
+                                        <?php
+                                            echo $form->input('glucose_check', array(
+                                                'div' => false, 'label' => false, 'class' => 'inpuText',
+                                                'size' => 5
+                                            ));
+                                        ?>
+                                        </td>
+                                        <td><span class="label">mg/dl</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="label">Asam urat</span></td>
+                                        <td>
+                                        <?php
+                                            echo $form->input('uric_acid_check', array(
+                                                'div' => false, 'label' => false, 'class' => 'inpuText',
+                                                'size' => 5
+                                            ));
+                                        ?>
+                                        </td>
+                                        <td><span class="label">mg/dl</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="label">Kolesterol</span></td>
+                                        <td>
+                                        <?php
+                                            echo $form->input('cholesterol_check', array(
+                                                'div' => false, 'label' => false, 'class' => 'inpuText',
+                                                'size' => 5
+                                            ));
+                                        ?>
+                                        </td>
+                                        <td><span class="label">mg/dl</span></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
                     </table>
                 </td>
                 <td>
