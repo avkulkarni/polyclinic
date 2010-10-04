@@ -36,6 +36,9 @@
                     'model' => 'Handler',
                     'field' => 'name'
                 )
+              ),
+              'displayedAs' => array(
+                'checkup_date' => 'date'
               )
         ));
 ?>

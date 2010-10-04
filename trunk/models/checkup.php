@@ -79,7 +79,14 @@ class Checkup extends AppModel {
             'page', 'recursive', 'group', 'contain'
             )
         );
-        $medicines = $this->CheckupsMedicine->Medicine->find('list');
+        
+        $_medicines = $this->CheckupsMedicine->Medicine->find('all');
+        $medicines = array();
+        $units = array();
+        foreach ($_medicines as $medicine) {
+            $medicines[$medicine['Medicine']['id']] = $medicine['Medicine']['name'];
+            $units[$medicine['Medicine']['id']] = $medicine['Unit']['name'];
+        }
         
         foreach ($records as $key => $record) {
             if ( !empty($record['Checktype']) ) {
@@ -101,7 +108,14 @@ class Checkup extends AppModel {
             if ( !empty($record['CheckupsMedicine']) ) {
                 $records[$key]['Checkup']['medicine'] = '<ul>';
                 foreach ( $record['CheckupsMedicine'] as $medicine ) {
-                    $records[$key]['Checkup']['medicine'] .= '<li>' . $medicines[$medicine['medicine_id']] . '</li>';
+                    if ( $medicine['qty'] ) {
+                        $records[$key]['Checkup']['medicine'] .= '<li>' . $medicines[$medicine['medicine_id']] .
+                                                                 ' &rarr ' . $medicine['qty'];
+                        if ( isset($units[$medicine['medicine_id']]) ) {
+                            $records[$key]['Checkup']['medicine'] .= ' ' . $units[$medicine['medicine_id']];
+                        }
+                        $records[$key]['Checkup']['medicine'] .= '</li>';
+                    }
                 }
                 $records[$key]['Checkup']['medicine'] .= '</ul>';
             }

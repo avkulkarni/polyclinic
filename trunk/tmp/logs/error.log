@@ -1,3 +1,7 @@
 2010-09-30 06:45:04 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'CheckupsMedicine.name' in 'field list'</span> in [/home/akeda/www/poliklinik/cake/libs/model/datasources/dbo_source.php, line 681]
 2010-09-30 06:45:04 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/akeda/www/poliklinik/cake/libs/model/datasources/dbo_source.php, line 1091]
 2010-10-01 08:49:33 Warning: Warning (512): Model "Checkup" is not associated with model "User" in [/home/akeda/www/poliklinik/cake/libs/model/behaviors/containable.php, line 363]
+2010-10-04 10:14:14 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Medicine.id' in 'where clause'</span> in [/home/akeda/www/poliklinik/cake/libs/model/datasources/dbo_source.php, line 681]
+2010-10-04 10:14:14 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/akeda/www/poliklinik/cake/libs/model/datasources/dbo_source.php, line 1091]
+2010-10-04 10:28:29 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/akeda/www/poliklinik/cake/libs/model/model.php, line 574]
+2010-10-04 10:28:37 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/akeda/www/poliklinik/cake/libs/model/model.php, line 578]

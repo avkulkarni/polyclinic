@@ -410,5 +410,129 @@ class CheckupsController extends AppController {
         
         $this->set('show_form', $show_form);
     }
+    
+    function report_stock_medicines() {
+        $show_form = false;
+        if ( !empty($this->data['Checkup']['medicine_id']) && !empty($this->data['Checkup']['periode']) ) {
+            $this->layout = 'printhtml';
+            // Configure::write('debug', 0);
+            $checkup_date = $this->data['Checkup']['periode']['year'] . '-' .
+                            $this->data['Checkup']['periode']['month'] . '-' .
+                            $this->data['Checkup']['periode']['day'];
+            $this->set('checkup_date', $checkup_date);
+            
+            $conditions = array(
+                'CheckupsMedicine.medicine_id' => $this->data['Checkup']['medicine_id'],
+                'Checkup.checkup_date' => $checkup_date
+            );
+            $this->Checkup->Behaviors->attach('Containable');
+            $checkups = $this->Checkup->find('all', array(
+                'fields' => null,
+                'condition' => $conditions,
+                'contain' => array(
+                    'CheckupsMedicine' => array(
+                        'fields' => array('qty'),
+                        'conditions' => array(
+                            'CheckupsMedicine.medicine_id' => $this->data['Checkup']['medicine_id']
+                        )
+                    ),
+                    'Patient' => array(
+                        'fields' => array('name')
+                    )
+                )
+            ));
+            
+            $this->Checkup->CheckupsMedicine->Medicine->Behaviors->attach('Containable');
+            $medicine = $this->Checkup->CheckupsMedicine->Medicine->find('first', array(
+                'conditions' => array(
+                    'Medicine.id' => $this->data['Checkup']['medicine_id']
+                ),
+                'contain' => array('Unit')
+            ));
+            $this->set('medicine', $medicine);
+            
+            $medicines = array();
+            $counter = 0;
+            foreach ( $checkups as $key => $checkup ) {
+                if ( isset($checkup['CheckupsMedicine']) && !empty($checkup['CheckupsMedicine']) ) {
+                    $medicines[$cnt]['pengeluaran'] = $checkup['CheckupsMedicine'][0]['qty'];
+                    $medicines[$cnt]['pengebon'] = $checkup['Patient']['name'];
+                
+                    $medicines[$counter]['date_in'] = $item_in['ItemIn']['date_in'];
+                    $penerimaan += $item_in[0]['total'];
+                    $medicines[$counter]['penerimaan_periode'] = $item_in[0]['total']*1;
+                    
+                    if (!isset($medicines[$counter]['penerimaan_total']) ) {
+                        $medicines[$counter]['penerimaan_total'] = $penerimaan;
+                    } else {
+                        $medicines[$counter]['penerimaan_total'] += $penerimaan;
+                    }
+                    
+                    if ( !isset($stock) ) {
+                        $stock = $medicines[$counter]['penerimaan_periode'];
+                    } else {
+                        $stock += $medicines[$counter]['penerimaan_periode'];
+                    }
+                    $medicines[$counter]['pengeluaran'] = 0;
+                    $medicines[$counter]['pengebon'] = '';
+                    $medicines[$counter]['stock'] = $stock;
+                    
+                    // get item out on current date_in
+                    // to the next record date_in, if exists.
+                    // If not exists, compare last date_in
+                    // with passed period
+                    if ( isset($item_ins[$counter+1]) ) {
+                        $item_outs = $this->__getStockOutExt($item['Item']['id'], $item_in['ItemIn']['date_in'], $item_ins[$key+1]['ItemIn']['date_in']);
+                        
+                        $counter++;
+                        foreach ( $item_outs as $k2 => $item_out ) {
+                            $medicines[$counter]['date_in'] = $item_out['ItemOut']['date_approved'];
+                            $medicines[$counter]['pengeluaran'] = $item_out['ItemOut']['total_approved']*1;
+                            // $medicines[$counter]['penerimaan_periode'] = $stock;
+                            $medicines[$counter]['penerimaan_periode'] = '';
+                            $medicines[$counter]['pengebon'] = $item_out['User']['name'];
+                            
+                            $stock -= $item_out['ItemOut']['total_approved'];
+                            $medicines[$counter]['stock'] = $stock;
+                            $counter++;
+                        }
+                        
+                    } else if ( $item_in['ItemIn']['date_in'] != $periode ) {
+                        // if this is the last record
+                        // compare date_in with passed period
+                        if ( isset($item_ins[$key+1]['ItemIn']['date_in']) ) {
+                            $item_outs = $this->__getStockOutExt($item['Item']['id'], $item_in['ItemIn']['date_in'], $item_ins[$key+1]['ItemIn']['date_in']);
+                        } else {
+                            $item_outs = $this->__getStockOutExt($item['Item']['id'], $item_in['ItemIn']['date_in'], $periode);
+                        }
+                        
+                        $counter++;
+                        foreach ( $item_outs as $k3 => $item_out2 ) {
+                            $medicines[$counter]['date_in'] = $item_out2['ItemOut']['date_approved'];
+                            $medicines[$counter]['pengeluaran'] = $item_out2['ItemOut']['total_approved']*1;
+                            // $medicines[$counter]['penerimaan_periode'] = $stock;
+                            $medicines[$counter]['penerimaan_periode'] = '';
+                            $medicines[$counter]['pengebon'] = $item_out2['User']['name'];
+                            
+                            $stock -= $item_out2['ItemOut']['total_approved'];
+                            $medicines[$counter]['stock'] = $stock;
+                            $counter++;
+                        }
+                        
+                    } else {
+                        $counter++;
+                    }
+                
+                }
+            }
+            $this->set('medicines', $medicines);
+            
+        } else {
+            $show_form = true;
+            $this->set('medicines', $this->Checkup->CheckupsMedicine->Medicine->find('list'));
+        }
+        
+        $this->set('show_form', $show_form);
+    }
 }
 ?>
