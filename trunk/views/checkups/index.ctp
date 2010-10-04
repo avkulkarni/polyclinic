@@ -17,6 +17,10 @@
                     'title' => 'Jenis pemeriksaan',
                     'sortable' => false
                 ),
+                'medic_data' => array(
+                    'title' => 'Data medis',
+                    'sortable' => false
+                ),
                 'diagnosis' => array(
                     'title' => 'Diagnosis',
                     'sortable' => false

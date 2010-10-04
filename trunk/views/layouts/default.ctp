@@ -9,7 +9,7 @@
    <?php
         echo $html->meta('icon');
 		echo $html->css('rfg');        
-		echo $html->css('style');        
+		echo $html->css('style.css?20101003');        
         echo $html->script('jquery');
         echo $html->script('jquery.scrollto.min');
         echo $html->script('global');

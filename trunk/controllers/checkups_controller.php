@@ -355,7 +355,7 @@ class CheckupsController extends AppController {
                     'Handler',
                     'CheckupsMedicine' => array(
                         'fields' => array('qty'),
-                        'Medicine'
+                        'Medicine' => array('Unit')
                     ),
                     'Checktype', 'Diagnosis'
                 )
@@ -376,6 +376,7 @@ class CheckupsController extends AppController {
                                         $handler_types[$checkup['Handler']['handler_type_id']] : '') . ' ' . 
                                   $checkup['Handler']['name']
                 );
+                
                 if ( !empty($checkup['Checktype']) ) {
                     // check types
                     $records[$no]['checktypes'] = '<ul>';
@@ -383,22 +384,67 @@ class CheckupsController extends AppController {
                         $records[$no]['checktypes'] .= '<li>' . $checktype['name'] . '</li>';
                     }
                     $records[$no]['checktypes'] .= '</ul>';
-                    
+                }
+                
+                if ( !empty($checkup['Diagnosis']) ) {
                     // diagnoses
                     $records[$no]['diagnoses'] = '<ul>';
                     foreach ($checkup['Diagnosis'] as $diagnosis) {
                         $records[$no]['diagnoses'] .= '<li>' . $diagnosis['name'] . '</li>';
                     }
                     $records[$no]['diagnoses'] .= '</ul>';
-                    
+                }
+                
+                if ( !empty($checkup['CheckupsMedicine']) ) {
                     // medicines
                     $records[$no]['medicines'] = '<ul>';
                     foreach ($checkup['CheckupsMedicine'] as $medicine) {
                         $records[$no]['medicines'] .= '<li>' .$medicine['Medicine']['name'] .
-                            ' &rarr; ' . $medicine['qty'] . '</li>';
+                            ' &rarr; ' . $medicine['qty'] . ' ' . $medicine['Medicine']['Unit']['name'] . '</li>';
                     }
                     $records[$no]['medicines'] .= '</ul>';
                 }
+                
+                /**
+                 * Medical data
+                 */
+                $records[$no]['medic_data'] = '<table class="noborder">';
+                if ( $checkup['Checkup']['anamnesis'] ) {
+                    $records[$no]['medic_data'] .= '<tr>';
+                    $records[$no]['medic_data'] .= '<td><strong>Anamnesis</strong></td>';
+                    $records[$no]['medic_data'] .= '<td>' . $checkup['Checkup']['anamnesis'] . '</td>';
+                    $records[$no]['medic_data'] .= '</tr>';
+                }
+                if ( $checkup['Checkup']['physical_check'] ) {
+                    $records[$no]['medic_data'] .= '<tr>';
+                    $records[$no]['medic_data'] .= '<td><strong>Pemeriksaan fisik</strong></td>';
+                    $records[$no]['medic_data'] .= '<td>' . $checkup['Checkup']['physical_check'] . '</td>';
+                    $records[$no]['medic_data'] .= '</tr>';
+                }
+                
+                if ( $checkup['Checkup']['glucose_check'] || $checkup['Checkup']['uric_acid_check'] ||
+                     $checkup['Checkup']['cholesterol_check'] )
+                {
+                    $records[$no]['medic_data'] .= '<tr>';
+                    $records[$no]['medic_data'] .= '<td><strong>Pemeriksaan darah</strong></td>';
+                    $records[$no]['medic_data'] .= '<td>';
+                    $records[$no]['medic_data'] .= '<ul>';
+                    if ( $checkup['Checkup']['glucose_check'] ) {
+                        $records[$no]['medic_data'] .= '<li>Glukosa:&nbsp;<strong>' . $checkup['Checkup']['glucose_check'] . '</strong>&nbsp;mg/dl</li>';
+                    }
+                    if ( $checkup['Checkup']['uric_acid_check'] ) {
+                        $records[$no]['medic_data'] .= '<li>Asam&nbsp;urat:&nbsp;<strong>' . $checkup['Checkup']['uric_acid_check'] . '</strong>&nbsp;mg/dl</li>';
+                    }
+                    if ( $checkup['Checkup']['cholesterol_check'] ) {
+                        $records[$no]['medic_data'] .= '<li>Kolesterol:&nbsp;<strong>' . $checkup['Checkup']['cholesterol_check'] . '</strong>&nbsp;mg/dl</li>';
+                    }
+                    $records[$no]['medic_data'] .= '</ul>';
+                    $records[$no]['medic_data'] .= '</td>';
+                    $records[$no]['medic_data'] .= '</tr>';
+                } else {
+                    $records[$no]['medic_data'] .= '<tr><td colspan="2">&nbsp;</td></tr>';
+                }
+                $records[$no]['medic_data'] .= '</table>';
                 
                 $no++;
             }
