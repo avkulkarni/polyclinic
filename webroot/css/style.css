@@ -228,6 +228,9 @@ input:focus, select:focus {
 .tablegrid tr td.noRecord {
     text-align: center;
 }
+.noborder tr td {
+    border: none;
+}
 .module-head {
     -moz-border-radius: 5px;
     background: #DFDFDF url(../img/gray-grad.png) repeat-x left top;

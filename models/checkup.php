@@ -87,7 +87,6 @@ class Checkup extends AppModel {
             $medicines[$medicine['Medicine']['id']] = $medicine['Medicine']['name'];
             $units[$medicine['Medicine']['id']] = $medicine['Unit']['name'];
         }
-        
         foreach ($records as $key => $record) {
             if ( !empty($record['Checktype']) ) {
                 $records[$key]['Checkup']['checktype'] = '<ul>';
@@ -119,6 +118,47 @@ class Checkup extends AppModel {
                 }
                 $records[$key]['Checkup']['medicine'] .= '</ul>';
             }
+            
+            /**
+             * Medical data
+             */
+            $records[$key]['Checkup']['medic_data'] = '<table class="noborder">';
+            if ( $record['Checkup']['anamnesis'] ) {
+                $records[$key]['Checkup']['medic_data'] .= '<tr>';
+                $records[$key]['Checkup']['medic_data'] .= '<td><strong>Anamnesis</strong></td>';
+                $records[$key]['Checkup']['medic_data'] .= '<td>' . $record['Checkup']['anamnesis'] . '</td>';
+                $records[$key]['Checkup']['medic_data'] .= '</tr>';
+            }
+            if ( $record['Checkup']['physical_check'] ) {
+                $records[$key]['Checkup']['medic_data'] .= '<tr>';
+                $records[$key]['Checkup']['medic_data'] .= '<td><strong>Pemeriksaan fisik</strong></td>';
+                $records[$key]['Checkup']['medic_data'] .= '<td>' . $record['Checkup']['physical_check'] . '</td>';
+                $records[$key]['Checkup']['medic_data'] .= '</tr>';
+            }
+            
+            if ( $record['Checkup']['glucose_check'] || $record['Checkup']['uric_acid_check'] ||
+                 $record['Checkup']['cholesterol_check'] )
+            {
+                $records[$key]['Checkup']['medic_data'] .= '<tr>';
+                $records[$key]['Checkup']['medic_data'] .= '<td><strong>Pemeriksaan darah</strong></td>';
+                $records[$key]['Checkup']['medic_data'] .= '<td>';
+                $records[$key]['Checkup']['medic_data'] .= '<ul>';
+                if ( $record['Checkup']['glucose_check'] ) {
+                    $records[$key]['Checkup']['medic_data'] .= '<li>Glukosa:&nbsp;<strong>' . $record['Checkup']['glucose_check'] . '</strong>&nbsp;mg/dl</li>';
+                }
+                if ( $record['Checkup']['uric_acid_check'] ) {
+                    $records[$key]['Checkup']['medic_data'] .= '<li>Asam&nbsp;urat:&nbsp;<strong>' . $record['Checkup']['uric_acid_check'] . '</strong>&nbsp;mg/dl</li>';
+                }
+                if ( $record['Checkup']['cholesterol_check'] ) {
+                    $records[$key]['Checkup']['medic_data'] .= '<li>Kolesterol:&nbsp;<strong>' . $record['Checkup']['cholesterol_check'] . '</strong>&nbsp;mg/dl</li>';
+                }
+                $records[$key]['Checkup']['medic_data'] .= '</ul>';
+                $records[$key]['Checkup']['medic_data'] .= '</td>';
+                $records[$key]['Checkup']['medic_data'] .= '</tr>';
+            } else {
+                $records[$key]['Checkup']['medic_data'] .= '<tr><td colspan="2">&nbsp;</td></tr>';
+            }
+            $records[$key]['Checkup']['medic_data'] .= '</table>';
         }
         
         return $records;
