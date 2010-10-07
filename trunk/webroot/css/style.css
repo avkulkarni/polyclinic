@@ -230,6 +230,7 @@ input:focus, select:focus {
 }
 .noborder tr td {
     border: none;
+    vertical-align: top;
 }
 .module-head {
     -moz-border-radius: 5px;
