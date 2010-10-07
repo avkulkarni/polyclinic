@@ -358,7 +358,7 @@ class CheckupsController extends AppController {
             );
             $this->Checkup->Behaviors->attach('Containable');
             $checkups = $this->Checkup->find('all', array(
-                'condition' => $conditions,
+                'conditions' => $conditions,
                 'contain' => array(
                     'Patient' => array(
                         'fields' => array('name', 'code'),
