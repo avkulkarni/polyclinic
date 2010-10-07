@@ -223,26 +223,38 @@ class CheckupsController extends AppController {
         $this->layout = 'printhtml';
         //Configure::write('debug', 0);
         
-        $this->Checkup->Patient->Behaviors->attach('Containable');
-        $patients = $this->Checkup->Patient->find('all', array(
-            'fields' => array('id'),
+        $this->Checkup->Behaviors->attach('Containable');
+        $checkups = $this->Checkup->find('all', array(
             'contain' => array(
-                'PatientType' => array(
-                    'fields' => array('name')
+                'Patient' => array(
+                    'fields' => array('id'),
+                    'PatientType' => array(
+                        'fields' => array('PatientType.name')
+                    )
                 )
             )
         ));
+        $types = $this->Checkup->Patient->PatientType->find('list', array(
+            'fields' => array('name', 'id')
+        ));
+        foreach ($types as $key => $val) {
+            $types[$key] = 0;
+        }
         $records = array();
-        foreach ($patients as $patient) {
-            if ( !isset($records[$patient['PatientType']['name']]) ) {
-                $records[$patient['PatientType']['name']] = 1;
-            } else {
-                $records[$patient['PatientType']['name']]++;
+        $total_patients = 0;
+        foreach ($checkups as $checkup) {
+            if ( isset($checkup['Patient']['PatientType']['name']) && !empty($checkup['Patient']['PatientType']['name']) ) {
+                if ( !isset($records[$checkup['Patient']['PatientType']['name']]) ) {
+                    $records[$checkup['Patient']['PatientType']['name']] = 1;
+                } else {
+                    $records[$checkup['Patient']['PatientType']['name']]++;
+                }
+                $total_patients++;
             }
         }
-        
-        $total_patients = count($patients);
-        $this->set('records', $records);
+
+        $total_patients = $total_patients;
+        $this->set('records', array_merge($types, $records));
         $this->set('total_patients', $total_patients);
     }
     
