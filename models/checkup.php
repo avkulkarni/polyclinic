@@ -47,6 +47,86 @@ class Checkup extends AppModel {
         )
     );
     
+    function beforeSave($created) {
+        // make sure medicines are not higher than available stock
+        if ( $created ) { // on insert
+            if ( isset($this->data['Checkup']['CheckupsMedicine']) && !empty($this->data['Checkup']['CheckupsMedicine']) ) {
+                $medicines = array();
+                foreach ($this->data['Checkup']['CheckupsMedicine'] as $medicine) {
+                    if ( !($medicine['medicine_id']) || !$medicine['qty'] ) {
+                        continue;
+                    }
+                    if ( !isset($medicines[$medicine['medicine_id']]) ) {
+                        $medicines[$medicine['medicine_id']] = 0;
+                    }
+                    $medicines[$medicine['medicine_id']] += $medicine['qty'];
+                }
+                
+                foreach ($medicines as $id => $medicine) {
+                    $stock = $this->__getLatestStock($id);
+                    if ( ($stock - $medicine) < 0 ) {
+                        return false;
+                    }
+                }
+            }
+        } else { // on edit
+            
+        }
+        
+        return true;
+    }
+    
+    function __getLatestStock($medicine_id, $exclude_row_id = null) {
+        $total_in = $total_out = 0;
+        $this->CheckupsMedicine->Medicine->bindModel(array(
+            'hasMany' => array('MedicineIn')
+        ));
+        $conditions = array(
+            'MedicineIn.medicine_id' => $medicine_id
+        );
+        $fields = array(
+            'SUM(MedicineIn.total) as total'
+        );
+        $medicine_ins = $this->CheckupsMedicine->Medicine->MedicineIn->find('all', array(
+            'conditions' => $conditions,
+            'fields' => $fields,
+            'contain' => array(),
+            'group' => 'MedicineIn.medicine_id'
+        ));
+        // set total in
+        if ( !empty($medicine_ins) && isset($medicine_ins[0][0]['total']) ) {
+            $total_in = $medicine_ins[0][0]['total'];
+        }
+        
+        $this->Behaviors->attach('Containable');
+        $checkups = $this->find('all', array(
+            'fields' => null,
+            'contain' => array(
+                'CheckupsMedicine' => array(
+                    'fields' => array('qty'),
+                    'conditions' => array(
+                        'CheckupsMedicine.medicine_id' => $medicine_id
+                    )
+                ),
+                'Patient' => array(
+                    'fields' => array('name')
+                )
+            )
+        ));
+        
+        // set total out
+        foreach ($checkups as $key => $checkup) {
+            if ( !empty($checkup['CheckupsMedicine']) ) {
+                $checkups[$key]['Checkup']['total_qty'] = 0;
+                foreach ( $checkup['CheckupsMedicine'] as $q ) {
+                    $total_out += $q['qty'];
+                }
+            }
+        }
+        
+        return ($total_in - $total_out);
+    }
+    
     function vPatient($field) {
         return $this->Patient->find('count', array(
             'conditions' => array(
