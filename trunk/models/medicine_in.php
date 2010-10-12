@@ -88,7 +88,6 @@ class MedicineIn extends AppModel {
             'MedicineIn.date_in <=' => $periode
         );
         $fields = array(
-            'MedicineIn.created',
             'MedicineIn.date_in',
             'SUM(MedicineIn.total) as total'
         );
