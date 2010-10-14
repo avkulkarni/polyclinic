@@ -34,8 +34,10 @@
 </fieldset>
 <?php else:?>
 <h1>KARTU STOK OBAT</h1>
-<h2>Per <?php echo $checkup_date;?></h2>
 <br />
+<span>Nama Obat: <?php echo $medicine['Medicine']['name'];?></span>
+<span>Satuan: <?php echo $medicine['Unit']['name'];?></span>
+<span>Periode: <?php echo $time->format('d/m/Y', $checkup_date);?></span>
 <center>
 <table class="vAlignTop">
     <thead>

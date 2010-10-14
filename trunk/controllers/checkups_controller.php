@@ -568,7 +568,7 @@ class CheckupsController extends AppController {
     
     function report_stock() {
         $this->layout = 'printhtml';
-        //Configure::write('debug', 0);
+        Configure::write('debug', 0);
         
         $medicines = array();
         $_medicines = $this->Checkup->CheckupsMedicine->Medicine->find('all', array(
@@ -641,6 +641,64 @@ class CheckupsController extends AppController {
         $this->set('medicines', $medicines);
         $this->set('terlaris', $terlaris);
         $this->set('minimum', $minimum);
+    }
+    
+    function view_zero_stocks() {
+        $medicines = array();
+        $_medicines = $this->Checkup->CheckupsMedicine->Medicine->find('all', array(
+            'order' => 'Medicine.name ASC'
+        ));
+        // ordered key by id
+        foreach ($_medicines as $key => $medicine) {
+            $medicine['Medicine']['pengeluaran'] = 0;
+            $medicine['Medicine']['penerimaan']  = 0;
+            $medicines[$medicine['Medicine']['id']] = $medicine;
+        }
+        $this->Checkup->Behaviors->attach('Containable');
+        $checkups = $this->Checkup->find('all', array(
+            'fields' => array('id'),
+            'contain' => array(
+                'CheckupsMedicine'
+            ),
+            'order' => 'Checkup.checkup_date ASC, Checkup.created ASC'
+        ));
+        foreach ($checkups as $checkup) {
+            if ( !empty($checkup['CheckupsMedicine']) ) {
+                foreach ( $checkup['CheckupsMedicine'] as $q ) {
+                    $medicines[$q['medicine_id']]['Medicine']['pengeluaran'] += $q['qty'];
+                }
+            }
+        }
+        // get medicine ins
+        $this->Checkup->CheckupsMedicine->Medicine->bindModel(array(
+            'hasMany' => array('MedicineIn')
+        ));
+        $fields = array(
+            'MedicineIn.date_in',
+            'MedicineIn.medicine_id',
+            'SUM(MedicineIn.total) as total'
+        );
+        $medicine_ins = $this->Checkup->CheckupsMedicine->Medicine->MedicineIn->find('all', array(
+            'fields' => $fields,
+            'contain' => array(),
+            'group' => 'MedicineIn.medicine_id'
+        ));
+        foreach ($medicine_ins as $medicine_in) {
+            $medicines[$medicine_in['MedicineIn']['medicine_id']]['Medicine']['penerimaan'] += $medicine_in[0]['total'];
+        }
+        
+        foreach ($medicines as $key => $medicine) {
+            $medicines[$key]['Medicine']['stok'] = $medicines[$key]['Medicine']['penerimaan'] - $medicines[$key]['Medicine']['pengeluaran'];
+            unset( $medicines[$key]['Medicine']['penerimaan'] );
+            unset( $medicines[$key]['Medicine']['pengeluaran'] );
+            
+            if ( $medicines[$key]['Medicine']['stok'] > 0 ) {
+                unset($medicines[$key]);
+            }
+            
+        }
+        
+        $this->set('records', $medicines);
     }
     
     function __getStockInExt($medicine_id, $periode = null) {
