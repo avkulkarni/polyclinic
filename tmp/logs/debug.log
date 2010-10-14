@@ -66,3 +66,5 @@
 2010-10-12 09:11:49 Notice: Notice (8): Undefined index: Medicine in [/home/akeda/www/poliklinik/app/views/checkups/report_stock.ctp, line 39]
 2010-10-12 11:46:10 Notice: Notice (8): Undefined variable: total in [/home/akeda/www/poliklinik/app/models/checkup.php, line 125]
 2010-10-12 11:46:10 Notice: Notice (8): Use of undefined constant out - assumed 'out' in [/home/akeda/www/poliklinik/app/models/checkup.php, line 125]
+2010-10-14 11:49:59 Notice: Notice (8): Undefined variable: records in [/home/akeda/www/poliklinik/app/views/checkups/view_zero_stocks.ctp, line 77]
+2010-10-14 11:50:30 Notice: Notice (8): Undefined index: Checkup in [/home/akeda/www/poliklinik/app/views/checkups/view_zero_stocks.ctp, line 83]
