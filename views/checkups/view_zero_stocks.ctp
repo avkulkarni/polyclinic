@@ -2,7 +2,7 @@
 <div class="tablegrid-head">
     <div class="module-head">
         <div class="module-head-c">
-            <h2><?php echo isset($this->pageTitle) ? __($this->pageTitle, true) : __($modelName, true); ?></h2>
+            <h2>Obat yang harus dibeli</h2>
             <div class="module-tools">
                 <?php if ( $module_permission['operations']['print']): ?>
                 <a href='#' class="media print"><span>Print</span></a> | 
