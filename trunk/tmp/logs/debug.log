@@ -150,3 +150,7 @@
 2010-10-23 17:35:57 Notice: Notice (8): Undefined index: penerimaan in [/home/akeda/www/poliklinik/app/controllers/checkups_controller.php, line 625]
 2010-10-23 17:35:57 Notice: Notice (8): Undefined index: pengeluaran in [/home/akeda/www/poliklinik/app/controllers/checkups_controller.php, line 629]
 2010-10-23 17:35:57 Notice: Notice (8): Undefined index: pengeluaran in [/home/akeda/www/poliklinik/app/controllers/checkups_controller.php, line 634]
+2010-10-23 18:38:40 Notice: Notice (8): Undefined property: WidgetsController::$pageTitle in [/home/akeda/www/poliklinik/app/app_controller.php, line 77]
+2010-10-23 18:38:40 Notice: Notice (8): Undefined variable: profile in [/home/akeda/www/poliklinik/app/views/layouts/default.ctp, line 43]
+2010-10-23 18:38:40 Notice: Notice (8): Undefined variable: profile in [/home/akeda/www/poliklinik/app/views/layouts/default.ctp, line 98]
+2010-10-23 18:40:04 Notice: Notice (8): Undefined property: WidgetsController::$pageTitle in [/home/akeda/www/poliklinik/app/app_controller.php, line 77]
