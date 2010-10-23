@@ -15,6 +15,19 @@
         echo $html->script('global');
         echo $scripts_for_layout;
     ?>
+    <script type="text/javascript">
+    // renders widgets
+    $(function() {
+        $.get('<?php echo $this->webroot;?>widgets/summary_medicines/', function(data) {
+            $('.sidebar:last').after(
+                '<div class="sidebar">' +
+                    '<div class="sidebarc">' +
+                        '<div class="sidebarcb">' + data +
+                '</div></div></div>'
+            );
+        });
+    });
+    </script>
 </head>
 <body>
 <div class="tophdw">

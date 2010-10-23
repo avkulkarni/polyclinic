@@ -469,7 +469,7 @@ class AppController extends Controller {
         
         // pass global actions
         $isGlobalAction = array_intersect(array($this->action), $this->globalActions);
-        if ( !empty($isGlobalAction) ) {
+        if ( !empty($isGlobalAction) || $this->name == 'Widgets' ) {
             return true;
         }
         
