@@ -287,7 +287,8 @@ class CheckupsController extends AppController {
                 'condition' => $conditions,
                 'contain' => array(
                     'Patient' => array(
-                        'fields' => array('name', 'code')
+                        'fields' => array('name', 'code'),
+                        'PatientType'
                     ),
                     'Handler',
                     'CheckupsMedicine' => array(
@@ -308,7 +309,7 @@ class CheckupsController extends AppController {
                     'date' => $checkup['Checkup']['checkup_date'],
                     'patient_code' => $checkup['Patient']['code'],
                     'patient_name' => $checkup['Patient']['name'],
-                    'patient_work' => '',
+                    'patient_work' => $checkup['Patient']['PatientType']['name'],
                     'checktypes' => '',
                     'diagnoses' => '',
                     'medicines' => '',
