@@ -1,4 +1,4 @@
-<h1>LAPORAN STOK BARANG</h1>
+<h1>LAPORAN STOK OBAT</h1>
 <h2>Per <?php echo date('d/m/Y'); ?></h2>
 <br />
 <table align="center">
