@@ -54,8 +54,8 @@
                 <tr>
                     <th>No</th>
                     <th>Tanggal</th>
-                    <th>Pemeriksaan</th>
                     <th>Data medis</th>
+                    <th>Pemeriksaan</th>
                     <th>Diagnosa/Pengobatan</th>
                     <th>Obat yang diberikan</th>
                     <th>Pemeriksa</th>
@@ -66,8 +66,8 @@
             <tr>
                 <td><?php echo $no;?></td>
                 <td><?php echo $time->format('d/m/Y', $record['date']);?></td>
-                <td><?php echo $record['checktypes'];?></td>
                 <td><?php echo $record['medic_data'];?></td>
+                <td><?php echo $record['checktypes'];?></td>
                 <td><?php echo $record['diagnoses'];?></td>
                 <td><?php echo $record['medicines'];?></td>
                 <td><?php echo $record['handler'];?></td>
