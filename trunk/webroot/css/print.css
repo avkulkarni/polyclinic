@@ -56,6 +56,10 @@ table.noborder tr td {
     border: none;
     width: auto;
 }
+table.borderize tr td {
+    border: 1px solid #000;
+    width: auto;
+}
 table tr td.whiteborder, table tr th.whiteborder {
     border-color: #fff;
 }
