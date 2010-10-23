@@ -2,6 +2,11 @@
 class MedicinesController extends AppController {
     var $pageTitle = 'Obat-obatan';
     
+    function index() {
+        $this->paginate['order'] = 'Medicine.name ASC';
+        parent::index();
+    }
+    
     function add() {
         $this->__setAdditionals();
         parent::add();
