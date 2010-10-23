@@ -1,6 +1,6 @@
 <?php if ($show_form):?>
 <fieldset>
-<legend>Rekapitulasi Berobat dan Cek Kesehatan</legend>
+<legend>Rekapitulasi Pasien Berobat dan Cek Kesehatan</legend>
 <?php echo $form->create();?>
     <table class="input">
         <tr>
@@ -36,7 +36,7 @@
 </form>
 </fieldset>
 <?php else:?>
-<h1>REKAPITULASI PASIEN BEROBAT DAM CEK KESEHATAN</h1>
+<h1>REKAPITULASI PASIEN BEROBAT DAN CEK KESEHATAN</h1>
 <h2>Per <?php echo $date;?></h2>
 <br />
 <center>
