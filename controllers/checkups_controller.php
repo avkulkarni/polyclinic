@@ -297,7 +297,8 @@ class CheckupsController extends AppController {
                         )
                     ),
                     'Checktype', 'Diagnosis'
-                )
+                ),
+                'order' => 'Checkup.checkup_date ASC'
             ));
             $handler_types = $this->Checkup->Handler->HandlerType->find('list');
             $records = array();
