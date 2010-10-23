@@ -11,8 +11,8 @@
 		echo $html->css('rfg', 'stylesheet', array(
             'media' => 'print, screen'
         ));
-		echo $html->css('print', 'stylesheet', array(
-            'media' => 'print.css?23102010, screen'
+		echo $html->css('print.css?23102010', 'stylesheet', array(
+            'media' => 'print, screen'
         ));
         echo $scripts_for_layout;
     ?>

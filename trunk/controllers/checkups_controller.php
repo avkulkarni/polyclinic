@@ -703,6 +703,8 @@ class CheckupsController extends AppController {
             
         }
         
+        $this->pageTitle = 'Obat yang harus dibeli';
+        
         $this->set('records', $medicines);
     }
     
