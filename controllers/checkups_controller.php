@@ -292,7 +292,9 @@ class CheckupsController extends AppController {
                     'Handler',
                     'CheckupsMedicine' => array(
                         'fields' => array('qty'),
-                        'Medicine'
+                        'Medicine' => array(
+                            'Unit'
+                        )
                     ),
                     'Checktype', 'Diagnosis'
                 )
@@ -332,7 +334,9 @@ class CheckupsController extends AppController {
                     $records[$no]['medicines'] = '<ul>';
                     foreach ($checkup['CheckupsMedicine'] as $medicine) {
                         $records[$no]['medicines'] .= '<li>' .$medicine['Medicine']['name'] .
-                            ' &rarr; ' . $medicine['qty'] . '</li>';
+                            ' &rarr; ' . $medicine['qty'] . 
+                            (isset($medicine['Medicine']['Unit']['name']) ? ' ' . $medicine['Medicine']['Unit']['name'] : '') .
+                            '</li>';
                     }
                     $records[$no]['medicines'] .= '</ul>';
                 }
