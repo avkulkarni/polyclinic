@@ -9,12 +9,18 @@ class Medicine extends AppModel {
             'hasMany' => array(
                 'CheckupsMedicine' => array(
                     'className' => 'CheckupsMedicine'
+                ),
+                'MedicineIn' => array(
+                    'className' => 'MedicineIn'
                 )
             )
         ));
         
         $this->CheckupsMedicine->deleteAll(
             array('CheckupsMedicine.medicine_id' => $this->id)
+        );
+        $this->MedicineIn->deleteAll(
+            array('MedicineIn.medicine_id' => $this->id)
         );
         
         return true;
