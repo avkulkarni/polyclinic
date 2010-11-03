@@ -1,4 +1,32 @@
-<h1>REKAPITULASI PEMERIKSAAN KESEHATAN</h1>
+<?php if ( $show_form ): ?>
+<div class="<?=$this->params['controller']?> <?=$html->action?>">
+    <?php echo $form->create('Checkup', array('action' => 'report_checktypes'));?>
+	<fieldset>
+ 		<legend>REKAPITULASI PEMERIKSAAN KESEHATAN</legend>
+        <table class="input">
+            <tr id="afterThis">
+                <td class="label-required"><?php echo __('Bulan / Tahun');?>:</td>
+                <td>
+                    <?php
+                        echo $form->month('month', date('m'), array(), false);
+                        echo '-';
+                        echo $form->year('year', 2009, date('Y'), date('Y'));
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <?php
+                    echo $form->submit(__('Print', true), array('div'=>false, 'id' => 'print'));
+                ?>
+                </td>
+            </tr>
+        </table>
+	</fieldset>
+</form>
+</div>
+<?php else: ?>
+<h1>REKAPITULASI PEMERIKSAAN KESEHATAN <br />Per <?php echo $month . ' ' . $year;?></h1>
 <br />
 <center>
 <table>
@@ -29,3 +57,4 @@
     </tbody>
 </table>
 </center>
+<?php endif;?>
