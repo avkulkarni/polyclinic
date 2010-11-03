@@ -220,42 +220,57 @@ class CheckupsController extends AppController {
     }
     
     function report_patients() {
-        $this->layout = 'printhtml';
-        //Configure::write('debug', 0);
+        $show_form = true;
         
-        $this->Checkup->Behaviors->attach('Containable');
-        $checkups = $this->Checkup->find('all', array(
-            'contain' => array(
-                'Patient' => array(
-                    'fields' => array('id'),
-                    'PatientType' => array(
-                        'fields' => array('PatientType.name')
+        if ( isset($this->data['month']['month']) && isset($this->data['year']['year']) ) {
+            $show_form = false;
+            $this->layout = 'printhtml';
+            Configure::write('debug', 0);
+            $date_start = $this->data['year']['year'] . '-' . $this->data['month']['month'] . '-01';
+            $date_end   = $this->data['year']['year'] . '-' . $this->data['month']['month'] . '-31';
+            $this->set('month', $this->getMonthName( $this->data['month']['month'] ));
+            $this->set('year', $this->data['year']['year'] );
+            
+            $this->Checkup->Behaviors->attach('Containable');
+            $checkups = $this->Checkup->find('all', array(
+                'contain' => array(
+                    'Patient' => array(
+                        'fields' => array('id'),
+                        'PatientType' => array(
+                            'fields' => array('PatientType.name')
+                        )
                     )
+                ),
+                'conditions' => array(
+                    'checkup_date >=' => $date_start,
+                    'checkup_date <=' => $date_end
                 )
-            )
-        ));
-        $types = $this->Checkup->Patient->PatientType->find('list', array(
-            'fields' => array('name', 'id')
-        ));
-        foreach ($types as $key => $val) {
-            $types[$key] = 0;
-        }
-        $records = array();
-        $total_patients = 0;
-        foreach ($checkups as $checkup) {
-            if ( isset($checkup['Patient']['PatientType']['name']) && !empty($checkup['Patient']['PatientType']['name']) ) {
-                if ( !isset($records[$checkup['Patient']['PatientType']['name']]) ) {
-                    $records[$checkup['Patient']['PatientType']['name']] = 1;
-                } else {
-                    $records[$checkup['Patient']['PatientType']['name']]++;
-                }
-                $total_patients++;
+            ));
+            $types = $this->Checkup->Patient->PatientType->find('list', array(
+                'fields' => array('name', 'id')
+            ));
+            foreach ($types as $key => $val) {
+                $types[$key] = 0;
             }
-        }
+            $records = array();
+            $total_patients = 0;
+            foreach ($checkups as $checkup) {
+                if ( isset($checkup['Patient']['PatientType']['name']) && !empty($checkup['Patient']['PatientType']['name']) ) {
+                    if ( !isset($records[$checkup['Patient']['PatientType']['name']]) ) {
+                        $records[$checkup['Patient']['PatientType']['name']] = 1;
+                    } else {
+                        $records[$checkup['Patient']['PatientType']['name']]++;
+                    }
+                    $total_patients++;
+                }
+            }
 
-        $total_patients = $total_patients;
-        $this->set('records', array_merge($types, $records));
-        $this->set('total_patients', $total_patients);
+            $total_patients = $total_patients;
+            $this->set('records', array_merge($types, $records));
+            $this->set('total_patients', $total_patients);
+        }
+        
+        $this->set('show_form', $show_form);
     }
     
     function report_checkups() {
